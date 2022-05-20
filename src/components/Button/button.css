@@ -1,0 +1,20 @@
+.button {
+  background-color: #fff;
+  border-color: #dbdbdb;
+  border-width: 1px;
+  color: #363636;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+}
+
+.button:hover {
+  border-color: #b5b5b5;
+  background-color: red;
+}
+
+.button:focus {
+  outline: none;
+  border-color: #363636;
+  color: #363636;
+  box-shadow: 0 0 0 0.125em rgba(156, 157, 161, 0.25);
+}

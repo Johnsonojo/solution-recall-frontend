@@ -1,0 +1,13 @@
+.form-container {
+  background-color: rgb(211, 211, 211);
+  border-radius: 10px;
+  margin: 50px auto;
+  padding: 40px;
+}
+
+.error-label {
+  color: red;
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+}

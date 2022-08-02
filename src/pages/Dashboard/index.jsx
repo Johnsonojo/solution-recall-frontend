@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import MainNavbar from "../../components/MainNavbar";
+import PostCard from "../../components/PostCard";
 
 const DashboardPage = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const DashboardPage = () => {
       >
         Create Post
       </Button>
+      <PostCard />
     </div>
   );
 };

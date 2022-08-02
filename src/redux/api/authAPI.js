@@ -12,4 +12,15 @@ authAPI.signupUser = async ({ userDetails }) => {
   }
 };
 
+authAPI.loginUser = async ({ loginDetails }) => {
+  try {
+    const response = await baseAxiosMethod.post("auth/login", loginDetails);
+    const { data } = response;
+    localStorage.setItem("token", data?.token);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default authAPI;

@@ -1,0 +1,24 @@
+.forgot-password-label {
+  cursor: pointer;
+  text-align: right;
+  align-items: right;
+  text-align: right !important;
+  margin-top: 20px !important;
+}
+.link {
+  text-align: right;
+}
+
+.login {
+  text-decoration: none !important;
+  color: #000000;
+  font-weight: bold;
+
+  &:hover {
+    color: #1e1e1e;
+  }
+}
+
+input {
+  height: 45px;
+}

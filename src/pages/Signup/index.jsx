@@ -1,11 +1,12 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import LandingNavbar from "../../components/LandingNavbar";
 import authAPI from "../../redux/api/authAPI";
-import "./signup.css";
+import "./signup.scss";
 
 const SignupPage = () => {
   const {
@@ -59,33 +60,6 @@ const SignupPage = () => {
 
           <div className="form-group mb-4">
             <input
-              type="text"
-              className="form-control"
-              id="exampleInputLastName"
-              placeholder="Last name"
-              {...register("lastName", { required: true, maxLength: 20 })}
-            />
-            <label className="error-label">
-              {errors.lastName?.type === "required" && "Last name is required"}
-            </label>
-          </div>
-
-          <div className="form-group mb-4">
-            <input
-              type="text"
-              className="form-control"
-              id="exampleInputPhoneNumber"
-              placeholder="Phone number"
-              {...register("phoneNumber", { required: true, maxLength: 20 })}
-            />
-            <label className="error-label">
-              {errors.phoneNumber?.type === "required" &&
-                "Phone number is required"}
-            </label>
-          </div>
-
-          <div className="form-group mb-4">
-            <input
               type="email"
               className="form-control"
               id="exampleInputEmail"
@@ -103,7 +77,7 @@ const SignupPage = () => {
             <label className="error-label">{errors?.email?.message}</label>
           </div>
 
-          <div className="form-group mb-5">
+          <div className="form-group mb-3">
             <input
               type="password"
               className="form-control"
@@ -121,14 +95,23 @@ const SignupPage = () => {
             </label>
             <label className="error-label">{errors?.password?.message}</label>
           </div>
-
-          <button
+          <Button
+            variant="dark"
             type="submit"
-            className="btn btn-primary col-12"
             disabled={mutation.isLoading}
+            className="col-12 mt-4"
+            size="lg"
           >
             {mutation.isLoading ? "Please wait..." : "Register"}
-          </button>
+          </Button>
+          <div className="mt-4">
+            <p>
+              Already have an account yet?{" "}
+              <Link className="signup" to="/login">
+                Login
+              </Link>
+            </p>
+          </div>
         </form>
       </div>
     </div>

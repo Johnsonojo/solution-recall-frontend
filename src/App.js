@@ -10,6 +10,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import AllPosts from "./pages/Post/allPosts";
 import CreatePost from "./pages/Post/createPost";
+import SinglePost from "./pages/Post/singlePost";
 import Signup from "./pages/Signup";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/all-posts" element={<AllPosts />} />
+            <Route path="/post/:postId" element={<SinglePost />} />
+            SinglePost
           </Routes>
           <ToastContainer />
         </div>

@@ -22,4 +22,13 @@ postAPI.getAllPosts = async () => {
   }
 };
 
+postAPI.getOnePost = async (postId) => {
+  try {
+    const response = await baseAxiosMethod.get(`post/${postId}`);
+    const { data } = response;
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
 export default postAPI;

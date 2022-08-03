@@ -26,7 +26,6 @@ const AllPosts = () => {
   });
 
   const { error, isError, isLoading } = allPostsForUser;
-  // console.log("allPosts", allPosts);
 
   return (
     <div>
@@ -38,7 +37,7 @@ const AllPosts = () => {
             <div>No Posts </div>
           ) : (
             allPosts?.map((post) => (
-              <Col xs={12} md={6} lg={4} key={post?.id}>
+              <Col xs={12} md={6} lg={4} key={post?.id} className="mb-4">
                 {isLoading && <div>Loading...</div>}
                 {isError && <div>{error}</div>}
                 <PostCard eachProblem={post} />

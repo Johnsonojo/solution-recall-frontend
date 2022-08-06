@@ -31,4 +31,16 @@ postAPI.getOnePost = async (postId) => {
     throw error;
   }
 };
+
+postAPI.updatePost = async ({ postId, postDetails }) => {
+  try {
+    const response = await baseAxiosMethod.put(`post/${postId}`, postDetails);
+    const { data } = response;
+    console.log("data from update post", data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default postAPI;

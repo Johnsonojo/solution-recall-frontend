@@ -10,6 +10,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import AllPosts from "./pages/Post/allPosts";
 import CreatePost from "./pages/Post/createPost";
+import EditPost from "./pages/Post/editPost";
 import SinglePost from "./pages/Post/singlePost";
 import Signup from "./pages/Signup";
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/all-posts" element={<AllPosts />} />
             <Route path="/post/:postId" element={<SinglePost />} />
+            <Route path="/edit-post/:postId" element={<EditPost />} />
             SinglePost
           </Routes>
           <ToastContainer />

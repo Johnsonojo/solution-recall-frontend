@@ -30,21 +30,25 @@ const AllPosts = () => {
   return (
     <div>
       <MainNavbar />
-      <h3 className="mt-3">All Posts</h3>
+      <h2 className="mt-3 mb-5">All Posts</h2>
       <Container>
-        <Row xs={1} md={2} className="g-6">
-          {allPosts.length === 0 ? (
-            <div>No Posts </div>
-          ) : (
-            allPosts?.map((post) => (
+        {allPosts?.length === 0 ? (
+          <Row>
+            <div className="text-center">
+              <h3>You have no posts</h3>
+            </div>
+          </Row>
+        ) : (
+          <Row xs={1} md={2} className="g-6">
+            {allPosts?.map((post) => (
               <Col xs={12} md={6} lg={4} key={post?.id} className="mb-4">
                 {isLoading && <div>Loading...</div>}
                 {isError && <div>{error}</div>}
                 <PostCard eachProblem={post} />
               </Col>
-            ))
-          )}
-        </Row>
+            ))}
+          </Row>
+        )}
       </Container>
     </div>
   );

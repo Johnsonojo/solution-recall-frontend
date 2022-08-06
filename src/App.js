@@ -12,6 +12,7 @@ import AllPosts from "./pages/Post/allPosts";
 import CreatePost from "./pages/Post/createPost";
 import EditPost from "./pages/Post/editPost";
 import SinglePost from "./pages/Post/singlePost";
+import SearchPost from "./pages/Search";
 import Signup from "./pages/Signup";
 
 const queryClient = new QueryClient();
@@ -30,7 +31,7 @@ function App() {
             <Route path="/all-posts" element={<AllPosts />} />
             <Route path="/post/:postId" element={<SinglePost />} />
             <Route path="/edit-post/:postId" element={<EditPost />} />
-            SinglePost
+            <Route path="/posts/search" element={<SearchPost />} />
           </Routes>
           <ToastContainer />
         </div>

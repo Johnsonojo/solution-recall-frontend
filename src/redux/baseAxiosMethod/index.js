@@ -14,27 +14,26 @@ baseAxiosMethod.interceptors.request.use(
 
     return config;
   },
-  (error) => Promise.reject(error),
+  (error) => Promise.reject(error)
 );
 
-export const getRequest = async ({ url}) => {
+export const getRequest = async ({ url }) => {
   const response = await baseAxiosMethod(url);
   return response.data;
-}
-export const postRequest = async ({ url, data}) => {
+};
+export const postRequest = async ({ url, data }) => {
   const response = await baseAxiosMethod.post(url, data);
   return response.data;
-}
+};
 
-export const putRequest = async ({ url, data}) => {
+export const putRequest = async ({ url, data }) => {
   const response = await baseAxiosMethod.put(url, data);
   return response.data;
-}
+};
 
 export const deleteRequest = async ({ url }) => {
   const response = await baseAxiosMethod.get(url);
   return response.data;
 };
-
 
 export default baseAxiosMethod;

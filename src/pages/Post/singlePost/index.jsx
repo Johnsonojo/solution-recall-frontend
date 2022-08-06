@@ -13,6 +13,13 @@ import queryKeys from "../../../redux/api/queryKeys";
 import "./style.scss";
 
 const DeletePostModal = (props) => {
+  // console.log(props);
+  // useQuery(
+  //   [queryKeys.deletePost, props.postId],
+  //   () => postAPI.deletePost(props.postId),
+  //   {}
+  // );
+
   return (
     <Modal
       {...props}
@@ -87,7 +94,11 @@ const SinglePost = () => {
           <Col xs={12} md={5} className="mb-4"></Col>
         </Row>
       </Container>
-      <DeletePostModal show={modalShow} onHide={() => setModalShow(false)} />
+      <DeletePostModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        postId={postId}
+      />
     </div>
   );
 };

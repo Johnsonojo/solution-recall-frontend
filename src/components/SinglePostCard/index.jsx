@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import logo1 from "../../assets/images/code.jpg";
 import "./style.scss";
 
@@ -20,10 +19,6 @@ const SinglePostView = ({ eachProblem }) => {
       <div>
         <h5>{eachProblem?.problemDescription}</h5>
         <p>{eachProblem?.problemSolution}</p>
-      </div>
-      <div className="action-button-wrapper col-6">
-        <Button variant="success">Edit</Button>
-        <Button variant="dark">Delete</Button>
       </div>
     </div>
   );

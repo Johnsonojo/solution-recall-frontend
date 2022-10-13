@@ -16,7 +16,7 @@ authAPI.loginUser = async ({ loginDetails }) => {
   try {
     const response = await baseAxiosMethod.post("auth/login", loginDetails);
     const { data } = response;
-    localStorage.setItem("token", data?.token);
+    localStorage.setItem("token", data?.data?.accessToken);
     return data;
   } catch (error) {
     throw error;

@@ -46,7 +46,6 @@ postAPI.deletePost = async (postId) => {
   try {
     const response = await baseAxiosMethod.delete(`post/${postId}`);
     const { data } = response;
-    // console.log("data from delete post", data);
     return data;
   } catch (error) {
     throw error;

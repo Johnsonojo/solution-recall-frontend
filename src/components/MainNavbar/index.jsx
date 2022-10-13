@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 
 const MainNavbar = () => {
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("registeredUserId");
+    window.location.replace("/login");
+  };
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -25,7 +30,9 @@ const MainNavbar = () => {
             <Link to="/posts/search">Search</Link>
           </Nav>
           <Nav className="me-auto">
-            <Link to="/search">Logout</Link>
+            <button className="btn btn-secondary" onClick={logout}>
+              Logout
+            </button>
           </Nav>
         </Navbar.Collapse>
       </Container>

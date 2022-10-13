@@ -2,7 +2,6 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import MainNavbar from "../../../components/MainNavbar";
 import postAPI from "../../../redux/api/postAPI";
@@ -15,20 +14,20 @@ const CreatePost = () => {
   } = useForm();
 
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
 
   const mutation = useMutation(postAPI.createPost, {
     onSuccess: (data) => {
       if (!data.error) {
         queryClient.setQueryData("createdPostDetails", () => data.data);
         toast.success(data?.message);
-        navigate("/all-posts");
+        window.location.replace("/all-posts");
       }
     },
     onError: (data) => {
       toast.error(data?.response?.data?.message);
     },
   });
+
   const onSubmit = (data) => {
     const postDetails = data;
     postDetails.tags = postDetails.problemTags.split(",");

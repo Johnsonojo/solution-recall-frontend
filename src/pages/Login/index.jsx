@@ -22,6 +22,7 @@ const LoginPage = () => {
     onSuccess: (data) => {
       if (!data.error) {
         queryClient.setQueryData("loginDetails", () => data.data);
+        localStorage.setItem("token", data?.data?.accessToken);
         navigate("/dashboard");
       }
     },

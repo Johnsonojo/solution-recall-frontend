@@ -22,7 +22,10 @@ const SignupPage = () => {
     onSuccess: (data) => {
       if (!data.error) {
         queryClient.setQueryData("registeredUserDetails", () => data.data);
-        localStorage.setItem("registeredUserId", data?.data?.id);
+        localStorage.setItem(
+          "registeredUserId",
+          data?.data?.newlyRegisteredUser.id
+        );
         navigate("/dashboard");
       }
     },

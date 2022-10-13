@@ -8,7 +8,7 @@ const MainNavbar = () => {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("registeredUserId");
-    window.location.replace("/");
+    window.location.replace("/login");
   };
   return (
     <Navbar bg="light" expand="lg">

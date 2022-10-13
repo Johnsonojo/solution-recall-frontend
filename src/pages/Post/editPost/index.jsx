@@ -28,7 +28,6 @@ const EditPost = () => {
 
   const mutation = useMutation(postAPI.updatePost, {
     onSuccess: (response) => {
-      console.log("response", response);
       if (!response.error) {
         queryClient.setQueryData("createdPostDetails", () => response?.data);
         toast.success(response?.message);
@@ -41,7 +40,6 @@ const EditPost = () => {
   });
 
   const onSubmit = (data) => {
-    console.log("data :>> ", data);
     const postDetails = data;
     postDetails.tags = postDetails.problemTags.split(",");
     mutation.mutate({ postId, postDetails });

@@ -11,7 +11,7 @@ import queryKeys from "../../../redux/api/queryKeys";
 const EditPost = () => {
   const {
     register,
-    formState: { errors, isDirty, isValid },
+    formState: { errors },
     handleSubmit,
   } = useForm({ mode: "onChange" });
 

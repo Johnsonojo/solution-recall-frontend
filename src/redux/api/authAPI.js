@@ -1,10 +1,11 @@
-import baseAxiosMethod from "../baseAxiosMethod";
+import { encrypt } from "../../utils";
+import axiosPublic from "../baseAxiosMethod/axiosPublic";
 
 const authAPI = {};
 
 authAPI.signupUser = async ({ userDetails }) => {
   try {
-    const response = await baseAxiosMethod.post("auth/register", userDetails);
+    const response = await axiosPublic.post("auth/register", userDetails);
     const { data } = response;
     return data;
   } catch (error) {
@@ -14,9 +15,13 @@ authAPI.signupUser = async ({ userDetails }) => {
 
 authAPI.loginUser = async ({ loginDetails }) => {
   try {
-    const response = await baseAxiosMethod.post("auth/login", loginDetails);
+    const response = await axiosPublic.post("auth/login", loginDetails);
     const { data } = response;
-    localStorage.setItem("token", data?.data?.accessToken);
+    // encrypt and store user data
+    const { accessToken, refreshToken } = data?.data;
+    const session = { accessToken, refreshToken };
+    const encryptedData = encrypt(session);
+    localStorage.setItem("session", encryptedData);
     return data;
   } catch (error) {
     throw error;

@@ -11,9 +11,9 @@ import "./signup.scss";
 const SignupPage = () => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
     handleSubmit,
-  } = useForm();
+  } = useForm({ mode: "onChange" });
 
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -22,10 +22,7 @@ const SignupPage = () => {
     onSuccess: (data) => {
       if (!data.error) {
         queryClient.setQueryData("registeredUserDetails", () => data.data);
-        localStorage.setItem(
-          "registeredUserId",
-          data?.data?.newlyRegisteredUser.id
-        );
+        toast.success(data?.message);
         navigate("/dashboard");
       }
     },
@@ -101,7 +98,7 @@ const SignupPage = () => {
           <Button
             variant="dark"
             type="submit"
-            disabled={mutation.isLoading}
+            disabled={!isDirty || !isValid}
             className="col-12 mt-4"
             size="lg"
           >

@@ -11,10 +11,12 @@ import queryKeys from "../../../redux/api/queryKeys";
 const EditPost = () => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
     handleSubmit,
-  } = useForm();
+  } = useForm({ mode: "onChange" });
+
   const [onePostDetails, setOnePostDetails] = useState({});
+
   const { postId } = useParams();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -41,7 +43,6 @@ const EditPost = () => {
 
   const onSubmit = (data) => {
     const postDetails = data;
-    postDetails.tags = postDetails.problemTags.split(",");
     mutation.mutate({ postId, postDetails });
   };
 
@@ -101,27 +102,6 @@ const EditPost = () => {
             </label>
           </div>
 
-          <div className="form-group mb-3">
-            <input
-              type="text"
-              defaultValue={
-                onePostDetails?.tags
-                  ? onePostDetails?.tags.map((tag) => `${tag.name}`)
-                  : ""
-              }
-              className="form-control"
-              id="problemTags"
-              placeholder="Enter problem tags separated by commas"
-              {...register("problemTags", { required: true })}
-            />
-            <label className="error-label">
-              {errors?.problemTags?.type === "required" &&
-                "Problem tags are required"}
-            </label>
-            <label className="error-label">
-              {errors?.problemTags?.message}
-            </label>
-          </div>
           <Button
             variant="dark"
             type="submit"

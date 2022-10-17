@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import MainNavbar from "../../../components/MainNavbar";
 import postAPI from "../../../redux/api/postAPI";
@@ -9,18 +10,19 @@ import postAPI from "../../../redux/api/postAPI";
 const CreatePost = () => {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
     handleSubmit,
-  } = useForm();
+  } = useForm({ mode: "onChange" });
 
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const mutation = useMutation(postAPI.createPost, {
     onSuccess: (data) => {
       if (!data.error) {
         queryClient.setQueryData("createdPostDetails", () => data.data);
         toast.success(data?.message);
-        window.location.replace("/all-posts");
+        navigate("/all-posts");
       }
     },
     onError: (data) => {
@@ -30,7 +32,6 @@ const CreatePost = () => {
 
   const onSubmit = (data) => {
     const postDetails = data;
-    postDetails.tags = postDetails.problemTags.split(",");
     mutation.mutate({ postDetails });
   };
 
@@ -88,26 +89,10 @@ const CreatePost = () => {
             </label>
           </div>
 
-          <div className="form-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              id="problemTags"
-              placeholder="Enter problem tags separated by commas"
-              {...register("problemTags", { required: true })}
-            />
-            <label className="error-label">
-              {errors?.problemTags?.type === "required" &&
-                "Problem tags are required"}
-            </label>
-            <label className="error-label">
-              {errors?.problemTags?.message}
-            </label>
-          </div>
           <Button
             variant="dark"
             type="submit"
-            disabled={mutation.isLoading}
+            disabled={!isDirty || !isValid}
             className="col-12 mt-4"
             size="lg"
           >

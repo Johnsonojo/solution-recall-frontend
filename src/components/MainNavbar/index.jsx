@@ -2,12 +2,12 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { clearStorage } from "../../utils";
 import "./style.scss";
 
 const MainNavbar = () => {
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("registeredUserId");
+    clearStorage();
     window.location.replace("/login");
   };
   return (

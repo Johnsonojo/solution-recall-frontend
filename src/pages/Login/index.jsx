@@ -1,28 +1,31 @@
-import React from "react";
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import LandingNavbar from "../../components/LandingNavbar";
+import useAuth from "../../hooks/useAuth";
 import authAPI from "../../redux/api/authAPI";
 import "./login.scss";
 
 const LoginPage = () => {
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+
   const {
     register,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
     handleSubmit,
-  } = useForm();
+  } = useForm({ mode: "onChange" });
 
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
 
   const mutation = useMutation(authAPI.loginUser, {
     onSuccess: (data) => {
+      const { id, firstName, role, accessToken } = data?.data;
       if (!data.error) {
         queryClient.setQueryData("loginDetails", () => data.data);
-        localStorage.setItem("token", data?.data?.accessToken);
+        setAuth({ id, firstName, role, accessToken });
         navigate("/dashboard");
       }
     },
@@ -85,7 +88,7 @@ const LoginPage = () => {
           <Button
             variant="dark"
             type="submit"
-            disabled={mutation.isLoading}
+            disabled={!isDirty || !isValid}
             className="col-12 mt-4"
             size="lg"
           >

@@ -1,10 +1,10 @@
-import baseAxiosMethod from "../baseAxiosMethod";
+import axiosPrivate from "../baseAxiosMethod/axiosPrivate";
 
 const postAPI = {};
 
 postAPI.createPost = async ({ postDetails }) => {
   try {
-    const response = await baseAxiosMethod.post("post", postDetails);
+    const response = await axiosPrivate.post("post", postDetails);
     const { data } = response;
     return data;
   } catch (error) {
@@ -14,7 +14,7 @@ postAPI.createPost = async ({ postDetails }) => {
 
 postAPI.getAllPosts = async () => {
   try {
-    const response = await baseAxiosMethod.get("post");
+    const response = await axiosPrivate.get("post");
     const { data } = response;
     return data;
   } catch (error) {
@@ -24,7 +24,7 @@ postAPI.getAllPosts = async () => {
 
 postAPI.getOnePost = async (postId) => {
   try {
-    const response = await baseAxiosMethod.get(`post/${postId}`);
+    const response = await axiosPrivate.get(`post/${postId}`);
     const { data } = response;
     return data;
   } catch (error) {
@@ -34,7 +34,7 @@ postAPI.getOnePost = async (postId) => {
 
 postAPI.updatePost = async ({ postId, postDetails }) => {
   try {
-    const response = await baseAxiosMethod.put(`post/${postId}`, postDetails);
+    const response = await axiosPrivate.put(`post/${postId}`, postDetails);
     const { data } = response;
     return data;
   } catch (error) {
@@ -44,7 +44,7 @@ postAPI.updatePost = async ({ postId, postDetails }) => {
 
 postAPI.deletePost = async (postId) => {
   try {
-    const response = await baseAxiosMethod.delete(`post/${postId}`);
+    const response = await axiosPrivate.delete(`post/${postId}`);
     const { data } = response;
     return data;
   } catch (error) {

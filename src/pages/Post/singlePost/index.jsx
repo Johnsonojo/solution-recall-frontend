@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import { useQuery, useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,42 +9,7 @@ import MainNavbar from "../../../components/MainNavbar";
 import SinglePostCard from "../../../components/SinglePostCard";
 import postAPI from "../../../redux/api/postAPI";
 import queryKeys from "../../../redux/api/queryKeys";
-import "./style.scss";
-
-const DeletePostModal = (props) => {
-  // console.log(props);
-  // useQuery(
-  //   [queryKeys.deletePost, props.postId],
-  //   () => postAPI.deletePost(props.postId),
-  //   {}
-  // );
-
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton></Modal.Header>
-      <Modal.Body>
-        <div>
-          <h3>Are you sure you want to delete this post?</h3>
-        </div>
-      </Modal.Body>
-      <Modal.Footer>
-        <div className="action-button-wrapper1">
-          <Button variant="success" onClick={props.onHide}>
-            Yes
-          </Button>
-          <Button variant="danger" onClick={props.onHide}>
-            No
-          </Button>
-        </div>
-      </Modal.Footer>
-    </Modal>
-  );
-};
+import DeletePostModal from "./DeleteModal";
 
 const SinglePost = () => {
   const [singlePost, setSinglePost] = useState({});

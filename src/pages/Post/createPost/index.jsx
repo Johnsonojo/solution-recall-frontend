@@ -38,9 +38,9 @@ const CreatePost = () => {
   return (
     <div>
       <MainNavbar />
-      <div className="col-sm-12 col-md-6 col-lg-4 container">
+      <div className="col-sm-12 col-md-6 col-lg-5 container">
         <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
-          <h5 className="mb-4">Add a problem with solution</h5>
+          <h3 className="mb-4">Add problem details</h3>
           <div className="form-group mb-4">
             <input
               type="text"
@@ -73,7 +73,7 @@ const CreatePost = () => {
           </div>
 
           <div className="form-group mb-4">
-            <input
+            <textarea
               type="text"
               className="form-control"
               id="problemSolution"

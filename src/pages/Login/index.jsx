@@ -26,6 +26,7 @@ const LoginPage = () => {
       if (!data.error) {
         queryClient.setQueryData("loginDetails", () => data.data);
         setAuth({ id, firstName, role, accessToken });
+        localStorage.setItem("user", JSON.stringify({ id, firstName }));
         navigate("/dashboard");
       }
     },

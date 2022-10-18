@@ -6,7 +6,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import "./App.scss";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import useAuth from "./hooks/useAuth";
 import Dashboard from "./pages/Dashboard";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
@@ -20,7 +19,8 @@ import Signup from "./pages/Signup";
 const queryClient = new QueryClient();
 
 function App() {
-  const { auth } = useAuth();
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -30,7 +30,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
 
-            <Route element={<ProtectedRoute user={auth?.firstName} />}>
+            <Route element={<ProtectedRoute user={user?.id} />}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/create-post" element={<CreatePost />} />
               <Route path="/all-posts" element={<AllPosts />} />

@@ -49,9 +49,12 @@ const EditPost = () => {
   return (
     <div>
       <MainNavbar />
-      <div className="col-md-8 container">
+      <div className="col-sm-12 col-md-6 col-lg-5 container">
         <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+          <h3 className="mb-4">Edit problem details</h3>
+
           <div className="form-group mb-4">
+            <label className="form-label">Problem title</label>
             <input
               type="text"
               defaultValue={onePostDetails?.problemTitle}
@@ -67,6 +70,8 @@ const EditPost = () => {
           </div>
 
           <div className="form-group mb-4">
+            <label className="form-label">Problem description</label>
+
             <input
               type="text"
               defaultValue={onePostDetails?.problemDescription}
@@ -85,7 +90,9 @@ const EditPost = () => {
           </div>
 
           <div className="form-group mb-4">
-            <input
+            <label className="form-label">Problem solution</label>
+
+            <textarea
               type="text"
               defaultValue={onePostDetails?.problemSolution}
               className="form-control"

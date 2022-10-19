@@ -1,22 +1,18 @@
-// eslint-disable-next-line
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import App from "./App";
 import { AuthProvider } from "./context/AuthProvider";
 import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
-// Put any other imports below so that CSS from your
-// components takes precedence over default styles.
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+
+ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <App />
     </AuthProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

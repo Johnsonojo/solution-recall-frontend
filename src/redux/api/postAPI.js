@@ -1,4 +1,4 @@
-import axiosPrivate from "../baseAxiosMethod/axiosPrivate";
+import axiosPrivate from "../axiosMethods/axiosPrivate";
 
 const postAPI = {};
 

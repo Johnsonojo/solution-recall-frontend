@@ -1,5 +1,5 @@
 import mem from "mem";
-import axiosPublic from "../redux/baseAxiosMethod/axiosPublic";
+import axiosPublic from "../redux/axiosMethods/axiosPublic";
 import { decrypt, encrypt } from "../utils";
 
 export const refreshTokenFn = async () => {

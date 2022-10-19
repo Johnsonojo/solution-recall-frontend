@@ -1,5 +1,5 @@
 import { encrypt } from "../../utils";
-import axiosPublic from "../baseAxiosMethod/axiosPublic";
+import axiosPublic from "../axiosMethods/axiosPublic";
 
 const authAPI = {};
 

@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
 import "./App.scss";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";

@@ -1,15 +1,18 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import MainEditor from "../../../components/Editor";
 import MainNavbar from "../../../components/MainNavbar";
 import postAPI from "../../../redux/api/postAPI";
+import "./style.scss";
 
 const CreatePost = () => {
   const {
     register,
+    control,
     formState: { errors, isDirty, isValid },
     handleSubmit,
   } = useForm({ mode: "onChange" });
@@ -73,13 +76,16 @@ const CreatePost = () => {
           </div>
 
           <div className="form-group mb-4">
-            <textarea
-              type="text"
-              className="form-control"
-              id="problemSolution"
-              placeholder="Enter problem solution"
-              {...register("problemSolution", { required: true })}
-            />
+            <div className="editor-wrapper">
+              <Controller
+                name="problemSolution"
+                control={control}
+                render={({ field }) => <MainEditor {...field} />}
+                defaultValue=""
+                rules={{ required: true }}
+              />
+            </div>
+
             <label className="error-label">
               {errors?.problemSolution?.type === "required" &&
                 "Problem solution is required"}

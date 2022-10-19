@@ -1,5 +1,4 @@
 import React from "react";
-import Badge from "react-bootstrap/Badge";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import logo1 from "../../assets/images/code.jpg";
@@ -20,14 +19,12 @@ const PostCard = ({ eachProblem }) => {
         </Card.Title>
         <Card.Subtitle>{eachProblem?.problemDescription}</Card.Subtitle>
         <br />
-        <Card.Text className="text-truncate">
-          {eachProblem?.problemSolution}
-        </Card.Text>
-        {eachProblem?.tags?.map((tag) => (
-          <Badge className="tag-badge" bg="secondary" key={tag?.id}>
-            {tag?.name}
-          </Badge>
-        ))}
+        <div
+          className="text-truncate"
+          dangerouslySetInnerHTML={{
+            __html: eachProblem?.problemSolution,
+          }}
+        />
       </Card.Body>
     </Card>
   );

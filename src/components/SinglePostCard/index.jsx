@@ -18,7 +18,7 @@ const SinglePostView = ({ eachProblem }) => {
       <br />
       <div>
         <h5>{eachProblem?.problemDescription}</h5>
-        <p>{eachProblem?.problemSolution}</p>
+        <p dangerouslySetInnerHTML={{ __html: eachProblem?.problemSolution }} />
       </div>
     </div>
   );

@@ -80,7 +80,9 @@ const CreatePost = () => {
               <Controller
                 name="problemSolution"
                 control={control}
-                render={({ field }) => <MainEditor {...field} />}
+                render={({ field: { onChange, ref } }) => (
+                  <MainEditor onChange={onChange} inputRef={ref} />
+                )}
                 defaultValue=""
                 rules={{ required: true }}
               />

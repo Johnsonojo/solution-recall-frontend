@@ -27,15 +27,22 @@ const MainEditor = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  const MyEditor = React.forwardRef((props, ref) => {
+    return (
+      <Editor
+        {...props}
+        inputRef={ref}
+        editorState={editorState}
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        onEditorStateChange={onEditorStateChange}
+      />
+    );
+  });
   return (
     <React.Fragment>
       <div className="editor">
-        <Editor
-          editorState={editorState}
-          wrapperClassName="wrapper-class"
-          editorClassName="editor-class"
-          onEditorStateChange={onEditorStateChange}
-        />
+        <MyEditor />
       </div>
     </React.Fragment>
   );

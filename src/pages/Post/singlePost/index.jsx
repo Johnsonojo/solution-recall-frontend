@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { useQuery, useQueryClient } from "react-query";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import MainNavbar from "../../../components/MainNavbar";
 import SinglePostCard from "../../../components/SinglePostCard";
 import postAPI from "../../../redux/api/postAPI";
@@ -16,7 +16,6 @@ const SinglePost = () => {
   const [modalShow, setModalShow] = useState(false);
   const { postId } = useParams();
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
 
   const fetchOnePost = useQuery(
     [queryKeys.getOnePost, postId],
@@ -46,7 +45,7 @@ const SinglePost = () => {
             <div className="action-button-wrapper2">
               <Button
                 variant="outline-success"
-                onClick={() => navigate(`/edit-post/${postId}`)}
+                onClick={() => (window.location = `/edit-post/${postId}`)}
               >
                 Edit
               </Button>

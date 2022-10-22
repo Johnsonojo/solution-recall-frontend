@@ -22,15 +22,11 @@ const SearchPost = () => {
       onSuccess: (response) => {
         if (!response.error) {
           queryClient.setQueryData("searchedKeyword", () => response?.data);
-          console.log(
-            "response?.userPostsResult :>> ",
-            response?.userPostsResult
-          );
           setAllPosts(response?.userPostsResult);
         }
       },
-      onError: (response) => {
-        console.log(response);
+      onError: (error) => {
+        console.log(error);
       },
     }
   );

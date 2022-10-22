@@ -4,8 +4,8 @@ import { Controller, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import MainEditor from "../../../components/Editor";
 import MainNavbar from "../../../components/MainNavbar";
+import TipTap from "../../../components/TipTapEditor";
 import postAPI from "../../../redux/api/postAPI";
 import "./style.scss";
 
@@ -80,8 +80,8 @@ const CreatePost = () => {
               <Controller
                 name="problemSolution"
                 control={control}
-                render={({ field: { onChange, ref } }) => (
-                  <MainEditor onChange={onChange} inputRef={ref} />
+                render={({ field: { onChange } }) => (
+                  <TipTap onChange={onChange} content="" />
                 )}
                 defaultValue=""
                 rules={{ required: true }}

@@ -1,16 +1,18 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import MainNavbar from "../../../components/MainNavbar";
+import TipTap from "../../../components/TipTapEditor";
 import postAPI from "../../../redux/api/postAPI";
 import queryKeys from "../../../redux/api/queryKeys";
 
 const EditPost = () => {
   const {
     register,
+    control,
     formState: { errors },
     handleSubmit,
   } = useForm({ mode: "onChange" });
@@ -21,12 +23,17 @@ const EditPost = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  useQuery([queryKeys.getOnePost, postId], async () => {
-    const data = await postAPI.getOnePost(postId);
-    queryClient.setQueryData("onePostDetails", () => data?.data);
-    setOnePostDetails(data?.data);
-    return data?.data;
-  });
+  const singlePostDetail = useQuery(
+    [queryKeys.getOnePost, postId],
+    async () => {
+      const data = await postAPI.getOnePost(postId);
+      queryClient.setQueryData("onePostDetails", () => data?.data);
+      setOnePostDetails(data?.data);
+      return data?.data;
+    }
+  );
+
+  const { isLoading } = singlePostDetail;
 
   const mutation = useMutation(postAPI.updatePost, {
     onSuccess: (response) => {
@@ -50,6 +57,8 @@ const EditPost = () => {
     <div>
       <MainNavbar />
       <div className="col-sm-12 col-md-6 col-lg-5 container">
+        {isLoading && <div>Loading...</div>}
+
         <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="mb-4">Edit problem details</h3>
 
@@ -92,14 +101,21 @@ const EditPost = () => {
           <div className="form-group mb-4">
             <label className="form-label">Problem solution</label>
 
-            <textarea
-              type="text"
-              defaultValue={onePostDetails?.problemSolution}
-              className="form-control"
-              id="problemSolution"
-              placeholder="Enter problem solution"
-              {...register("problemSolution", { required: true })}
-            />
+            <div className="editor-wrapper">
+              {!isLoading && (
+                <Controller
+                  name="problemSolution"
+                  control={control}
+                  render={({ field: { onChange } }) => (
+                    <TipTap
+                      onChange={onChange}
+                      content={onePostDetails?.problemSolution}
+                    />
+                  )}
+                />
+              )}
+            </div>
+
             <label className="error-label">
               {errors?.problemSolution?.type === "required" &&
                 "Problem solution is required"}
@@ -116,7 +132,7 @@ const EditPost = () => {
             className="col-12 mt-4"
             size="lg"
           >
-            {mutation.isLoading ? "Please wait..." : "Submit"}
+            {mutation.isLoading ? "Please wait..." : "Update"}
           </Button>
         </form>
       </div>

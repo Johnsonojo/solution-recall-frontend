@@ -1,0 +1,94 @@
+.text-editor {
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+
+  .menu-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #616161;
+    border-bottom: none;
+    padding-bottom: 00.5rem;
+
+    button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      transition: all 0.2s ease-in-out;
+      font-size: 18px;
+      outline: none;
+
+      &:hover {
+        background-color: #e2e8f0;
+      }
+      &.is-active {
+        background: rgb(107, 107, 107, 0.2);
+        padding: 2px 3px;
+        border-radius: 0.2rem;
+      }
+    }
+  }
+  .ProseMirror {
+    padding: 1rem;
+    border: 1px solid #616161;
+    min-height: 20rem;
+    background-color: #fff;
+
+    > * + * {
+      margin-top: 0.75em;
+    }
+
+    ul,
+    ol {
+      padding: 0 1rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      line-height: 1.1;
+    }
+
+    code {
+      background-color: #616161;
+      color: #616161;
+    }
+
+    pre {
+      background: #0d0d0d;
+      color: #fff;
+      font-family: "JetBrainsMono", monospace;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+
+      code {
+        color: inherit;
+        padding: 0;
+        background: none;
+        font-size: 0.8rem;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    blockquote {
+      padding-left: 1rem;
+      border-left: 2px solid #616161;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #616161;
+      margin: 2rem 0;
+    }
+  }
+}

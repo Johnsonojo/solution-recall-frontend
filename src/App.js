@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.scss";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import Dashboard from "./pages/Dashboard";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import AllPosts from "./pages/Post/allPosts";
@@ -31,7 +30,6 @@ function App() {
             <Route path="/signup" element={<Signup />} />
 
             <Route element={<ProtectedRoute user={user?.id} />}>
-              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/create-post" element={<CreatePost />} />
               <Route path="/all-posts" element={<AllPosts />} />
               <Route path="/post/:postId" element={<SinglePost />} />

@@ -39,3 +39,17 @@ textarea {
   font-weight: 600;
   text-align: left !important;
 }
+
+.top-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  button {
+    font-size: 16px;
+    text-align: center;
+  }
+}

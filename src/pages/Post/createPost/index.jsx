@@ -23,7 +23,7 @@ const CreatePost = () => {
   const mutation = useMutation(postAPI.createPost, {
     onSuccess: (data) => {
       if (!data.error) {
-        queryClient.setQueryData("createdPostDetails", () => data.data);
+        queryClient.setQueryData("createdPostDetails", () => data?.data);
         toast.success(data?.message);
         navigate("/all-posts");
       }
@@ -76,17 +76,15 @@ const CreatePost = () => {
           </div>
 
           <div className="form-group mb-4">
-            <div className="editor-wrapper">
-              <Controller
-                name="problemSolution"
-                control={control}
-                render={({ field: { onChange } }) => (
-                  <TipTap onChange={onChange} content="" />
-                )}
-                defaultValue=""
-                rules={{ required: true }}
-              />
-            </div>
+            <Controller
+              name="problemSolution"
+              control={control}
+              render={({ field: { onChange } }) => (
+                <TipTap onChange={onChange} content="" />
+              )}
+              defaultValue=""
+              rules={{ required: true }}
+            />
 
             <label className="error-label">
               {errors?.problemSolution?.type === "required" &&
@@ -104,7 +102,7 @@ const CreatePost = () => {
             className="col-12 mt-4"
             size="lg"
           >
-            {mutation.isLoading ? "Please wait..." : "Submit"}
+            {mutation.isLoading ? "Please wait..." : "Create"}
           </Button>
         </form>
       </div>

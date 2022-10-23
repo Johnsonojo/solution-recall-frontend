@@ -1,3 +1,5 @@
+import Placeholder from "@tiptap/extension-placeholder";
+import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
@@ -19,9 +21,6 @@ import {
 } from "react-icons/tb";
 import { VscHorizontalRule } from "react-icons/vsc";
 import "./style.scss";
-
-import Placeholder from "@tiptap/extension-placeholder";
-import Underline from "@tiptap/extension-underline";
 
 const MenuBar = ({ editor }) => {
   if (!editor) {
@@ -167,9 +166,7 @@ const TipTap = (props) => {
       StarterKit,
       Underline,
       Placeholder.configure({
-        placeholder: "Enter problem solution...",
-        showOnlyWhenEditable: false,
-        // emptyEditorClass: "is-editor-empty",
+        placeholder: "Enter problem solution",
       }),
     ],
     content: `${props.content}`,

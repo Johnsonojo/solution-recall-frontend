@@ -38,9 +38,11 @@ const EditPost = () => {
   const mutation = useMutation(postAPI.updatePost, {
     onSuccess: (response) => {
       if (!response.error) {
-        queryClient.setQueryData("createdPostDetails", () => response?.data);
+        queryClient.setQueryData("updatedPostDetails", () => response?.data);
         toast.success(response?.message);
-        navigate("/all-posts");
+        setTimeout(() => {
+          navigate("/all-posts");
+        }, 1000);
       }
     },
     onError: (data) => {
@@ -59,7 +61,7 @@ const EditPost = () => {
       <div className="col-sm-12 col-md-6 col-lg-5 container">
         {isLoading && <div>Loading...</div>}
 
-        <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+        <form className="form-container">
           <h3 className="mb-4">Edit problem details</h3>
 
           <div className="form-group mb-4">
@@ -131,6 +133,7 @@ const EditPost = () => {
             disabled={mutation.isLoading}
             className="col-12 mt-4"
             size="lg"
+            onClick={handleSubmit(onSubmit)}
           >
             {mutation.isLoading ? "Please wait..." : "Update"}
           </Button>

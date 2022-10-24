@@ -55,7 +55,7 @@ const SearchPost = () => {
                 disabled={isLoading}
                 onClick={refetch}
               >
-                Search
+                Recall
               </Button>
             </Form>
           </Col>

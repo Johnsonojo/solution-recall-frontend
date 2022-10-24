@@ -23,7 +23,7 @@ const SignupPage = () => {
       if (!data.error) {
         queryClient.setQueryData("registeredUserDetails", () => data.data);
         toast.success(data?.message);
-        navigate("/dashboard");
+        navigate("/login");
       }
     },
     onError: (data) => {

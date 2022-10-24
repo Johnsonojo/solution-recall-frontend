@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { useQuery, useQueryClient } from "react-query";
+import { useNavigate } from "react-router-dom";
 import MainNavbar from "../../../components/MainNavbar";
 import PostCard from "../../../components/PostCard";
 import postAPI from "../../../redux/api/postAPI";
@@ -12,6 +14,7 @@ const AllPosts = () => {
   const [allPosts, setAllPosts] = useState([]);
 
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const allPostsForUser = useQuery([queryKeys.allPosts], postAPI.getAllPosts, {
     onSuccess: (response) => {
@@ -30,7 +33,19 @@ const AllPosts = () => {
   return (
     <div>
       <MainNavbar />
-      <h2 className="mt-3 mb-5">All Posts</h2>
+      <div className="container top-content">
+        <h2>All Posts</h2>
+        <Button
+          variant="dark"
+          type="button"
+          onClick={() => {
+            navigate("/create-post");
+          }}
+          size="lg"
+        >
+          Create
+        </Button>
+      </div>
       <Container>
         {allPosts?.length === 0 ? (
           <Row>

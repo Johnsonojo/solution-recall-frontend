@@ -1,0 +1,29 @@
+.container {
+  .section-wrapper {
+    background-color: #ced4da;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
+
+    .step-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+
+      p {
+        text-align: justify;
+        margin: 0 10px;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    }
+  }
+}

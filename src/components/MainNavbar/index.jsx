@@ -2,6 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
 import { clearStorage } from "../../utils";
 import "./style.scss";
 
@@ -13,7 +14,9 @@ const MainNavbar = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="">Solution Caller</Navbar.Brand>
+        <Navbar.Brand>
+          <img src={logo} alt="logo" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>

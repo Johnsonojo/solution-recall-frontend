@@ -1,12 +1,20 @@
 import Placeholder from "@tiptap/extension-placeholder";
-import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
+import Underline from "@tiptap/extension-underline";
+import FontFamily from "@tiptap/extension-font-family";
+import TextStyle from "@tiptap/extension-text-style";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
-import { BiCodeAlt, BiParagraph } from "react-icons/bi";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import { BiCodeBlock, BiParagraph } from "react-icons/bi";
+import { BsJustify } from "react-icons/bs";
 import { FaListOl, FaListUl, FaRedo, FaUndo } from "react-icons/fa";
 import {
+  TbAlignCenter,
+  TbAlignLeft,
+  TbAlignRight,
   TbBlockquote,
   TbBold,
   TbCode,
@@ -30,8 +38,11 @@ const MenuBar = ({ editor }) => {
 
   return (
     <div className="menu-bar">
+      {/* Bold */}
       <button
         type="button"
+        data-bs-toggle="tooltip"
+        data-bs-placement="bottom"
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
         className={editor.isActive("bold") ? "is-active" : ""}
@@ -39,6 +50,7 @@ const MenuBar = ({ editor }) => {
         <TbBold />
       </button>
 
+      {/* Italic */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -48,6 +60,7 @@ const MenuBar = ({ editor }) => {
         <TbItalic />
       </button>
 
+      {/* Underline */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleUnderline().run()}
@@ -57,6 +70,7 @@ const MenuBar = ({ editor }) => {
         <TbUnderline />
       </button>
 
+      {/* Strikethrough */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -66,6 +80,119 @@ const MenuBar = ({ editor }) => {
         <TbStrikethrough />
       </button>
 
+      {/* Left Align */}
+      <button
+        type="button"
+        onClick={() => editor.chain().focus().setTextAlign("left").run()}
+        className={editor.isActive({ textAlign: "left" }) ? "is-active" : ""}
+      >
+        <TbAlignLeft />
+      </button>
+
+      {/* Center Align */}
+      <button
+        type="button"
+        onClick={() => editor.chain().focus().setTextAlign("center").run()}
+        className={editor.isActive({ textAlign: "center" }) ? "is-active" : ""}
+      >
+        <TbAlignCenter />
+      </button>
+
+      {/* Right Align */}
+      <button
+        type="button"
+        onClick={() => editor.chain().focus().setTextAlign("right").run()}
+        className={editor.isActive({ textAlign: "right" }) ? "is-active" : ""}
+      >
+        <TbAlignRight />
+      </button>
+
+      {/* Justify Align */}
+      <button
+        type="button"
+        onClick={() => editor.chain().focus().setTextAlign("justify").run()}
+        className={editor.isActive({ textAlign: "justify" }) ? "is-active" : ""}
+      >
+        <BsJustify />
+      </button>
+
+      {/* Unordered List */}
+      <button
+        type="button"
+        onClick={() => editor.chain().focus().toggleBulletList().run()}
+        className={editor.isActive("bulletList") ? "is-active" : ""}
+      >
+        <FaListUl />
+      </button>
+
+      {/* Ordered List */}
+      <button
+        type="button"
+        onClick={() => editor.chain().focus().toggleOrderedList().run()}
+        className={editor.isActive("orderedList") ? "is-active" : ""}
+      >
+        <FaListOl />
+      </button>
+
+      {/* Fonts */}
+      <DropdownButton
+        id="dropdown-item-button"
+        title="Select Font"
+        variant="dark"
+      >
+        <Dropdown.Item
+          as="button"
+          type="button"
+          onClick={() => editor.chain().focus().setFontFamily("Inter").run()}
+          className={
+            editor.isActive("textStyle", { fontFamily: "Inter" })
+              ? "is-active"
+              : ""
+          }
+        >
+          Inter
+        </Dropdown.Item>
+        <Dropdown.Item
+          as="button"
+          type="button"
+          onClick={() => editor.chain().focus().setFontFamily("serif").run()}
+          className={
+            editor.isActive("textStyle", { fontFamily: "serif" })
+              ? "is-active"
+              : ""
+          }
+        >
+          Serif
+        </Dropdown.Item>
+        <Dropdown.Item
+          as="button"
+          type="button"
+          onClick={() =>
+            editor.chain().focus().setFontFamily("monospace").run()
+          }
+          className={
+            editor.isActive("textStyle", { fontFamily: "monospace" })
+              ? "is-active"
+              : ""
+          }
+        >
+          Monospace
+        </Dropdown.Item>
+        <Dropdown.Item
+          as="button"
+          type="button"
+          onClick={() => editor.chain().focus().setFontFamily("cursive").run()}
+          className={
+            editor.isActive("textStyle", { fontFamily: "cursive" })
+              ? "is-active"
+              : ""
+          }
+        >
+          Cursive
+        </Dropdown.Item>
+      </DropdownButton>
+
+      {/* Code */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleCode().run()}
@@ -75,6 +202,7 @@ const MenuBar = ({ editor }) => {
         <TbCode />
       </button>
 
+      {/* Paragraph */}
       <button
         type="button"
         onClick={() => editor.chain().focus().setParagraph().run()}
@@ -83,6 +211,7 @@ const MenuBar = ({ editor }) => {
         <BiParagraph />
       </button>
 
+      {/* Heading 1 */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
@@ -91,6 +220,7 @@ const MenuBar = ({ editor }) => {
         <TbH1 />
       </button>
 
+      {/* Heading 2 */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
@@ -99,6 +229,7 @@ const MenuBar = ({ editor }) => {
         <TbH2 />
       </button>
 
+      {/* Heading 3 */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
@@ -107,6 +238,7 @@ const MenuBar = ({ editor }) => {
         <TbH3 />
       </button>
 
+      {/* Heading 4 */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
@@ -115,6 +247,7 @@ const MenuBar = ({ editor }) => {
         <TbH4 />
       </button>
 
+      {/* Heading 5 */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
@@ -123,6 +256,7 @@ const MenuBar = ({ editor }) => {
         <TbH5 />
       </button>
 
+      {/* Heading 6 */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
@@ -131,30 +265,16 @@ const MenuBar = ({ editor }) => {
         <TbH6 />
       </button>
 
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={editor.isActive("bulletList") ? "is-active" : ""}
-      >
-        <FaListUl />
-      </button>
-
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={editor.isActive("orderedList") ? "is-active" : ""}
-      >
-        <FaListOl />
-      </button>
-
+      {/* Code Block */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         className={editor.isActive("codeBlock") ? "is-active" : ""}
       >
-        <BiCodeAlt />
+        <BiCodeBlock />
       </button>
 
+      {/* Blockquote */}
       <button
         type="button"
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
@@ -163,6 +283,7 @@ const MenuBar = ({ editor }) => {
         <TbBlockquote />
       </button>
 
+      {/* Horizontal Rule */}
       <button
         type="button"
         onClick={() => editor.chain().focus().setHorizontalRule().run()}
@@ -170,6 +291,7 @@ const MenuBar = ({ editor }) => {
         <VscHorizontalRule />
       </button>
 
+      {/* Undo */}
       <button
         type="button"
         onClick={() => editor.chain().focus().undo().run()}
@@ -178,41 +300,13 @@ const MenuBar = ({ editor }) => {
         <FaUndo />
       </button>
 
+      {/* Redo */}
       <button
         type="button"
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
       >
         <FaRedo />
-      </button>
-
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().setTextAlign("left").run()}
-        className={editor.isActive({ textAlign: "left" }) ? "is-active" : ""}
-      >
-        left
-      </button>
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().setTextAlign("center").run()}
-        className={editor.isActive({ textAlign: "center" }) ? "is-active" : ""}
-      >
-        center
-      </button>
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().setTextAlign("right").run()}
-        className={editor.isActive({ textAlign: "right" }) ? "is-active" : ""}
-      >
-        right
-      </button>
-      <button
-        type="button"
-        onClick={() => editor.chain().focus().setTextAlign("justify").run()}
-        className={editor.isActive({ textAlign: "justify" }) ? "is-active" : ""}
-      >
-        justify
       </button>
     </div>
   );
@@ -223,12 +317,16 @@ const TipTap = (props) => {
     extensions: [
       StarterKit,
       Underline,
+      TextStyle,
       Placeholder.configure({
         placeholder: "Enter problem solution",
       }),
       TextAlign.configure({
         types: ["heading", "paragraph"],
         alignments: ["left", "center", "right", "justify"],
+      }),
+      FontFamily.configure({
+        types: ["textStyle"],
       }),
     ],
     content: `${props.content}`,

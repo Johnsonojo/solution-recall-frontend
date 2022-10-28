@@ -45,6 +45,8 @@ const CreatePost = () => {
         <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="mb-4">Add problem details</h3>
           <div className="form-group mb-4">
+            <label className="form-label">Problem title</label>
+
             <input
               type="text"
               className="form-control"
@@ -59,6 +61,7 @@ const CreatePost = () => {
           </div>
 
           <div className="form-group mb-4">
+            <label className="form-label">Problem description</label>
             <input
               type="text"
               className="form-control"
@@ -76,6 +79,8 @@ const CreatePost = () => {
           </div>
 
           <div className="form-group mb-4">
+            <label className="form-label">Problem solution</label>
+
             <Controller
               name="problemSolution"
               control={control}

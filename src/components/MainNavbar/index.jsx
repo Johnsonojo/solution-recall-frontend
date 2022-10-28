@@ -3,12 +3,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
-import { clearStorage } from "../../utils";
 import "./style.scss";
 
 const MainNavbar = () => {
   const logout = () => {
-    clearStorage();
+    localStorage.clear();
     window.location.replace("/login");
   };
   return (

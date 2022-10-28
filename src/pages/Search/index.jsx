@@ -34,7 +34,7 @@ const SearchPost = () => {
   return (
     <div>
       <MainNavbar />
-      <h3 className="mt-4 mb-4">SearchPost</h3>
+      <h3 className="mt-4 mb-4">Recall a solution</h3>
       <Container>
         <Row className="mt-4">
           <Col xs={12} md={6} lg={4}></Col>

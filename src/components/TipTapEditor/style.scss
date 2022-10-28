@@ -57,7 +57,7 @@
     padding-left: 10px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    // width: fit-content;
+    width: fit-content;
 
     > * + * {
       margin-top: 0.75em;
@@ -79,7 +79,7 @@
 
     code {
       background-color: #616161;
-      color: #616161;
+      color: #ffffff;
     }
 
     pre {
@@ -115,6 +115,10 @@
 
     &:focus {
       outline: none;
+    }
+
+    .ProseMirror-gapcursor {
+      display: none;
     }
   }
   .is-empty::before {

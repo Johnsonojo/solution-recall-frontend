@@ -1,17 +1,27 @@
 import React from "react";
+import createButton from "../../assets/images/create-button.png";
+import createPage from "../../assets/images/create.png";
+import loginImage from "../../assets/images/Login.png";
+import search from "../../assets/images/search.png";
+import singlePage from "../../assets/images/single.png";
 import LandingNavbar from "../../components/LandingNavbar";
 import "./style.scss";
-import loginImage from "../../assets/images/Login.png";
 
 const Homepage = () => {
   return (
     <div>
       <LandingNavbar />
-      <h1>Welcome to solution recaller</h1>
-
+      <div className="container col-sm-12 col-md-6 d-flex justify-content-center my-5">
+        <h3 className="main-text">
+          Are you tired of constantly searching for the solutions to technical
+          problems, challenges and or blockers you have solved in the past?
+          Well, with Solution Recaller you can document and recall them at any
+          time in the future.
+        </h3>
+      </div>
       <div className="container">
         <div className="main-title">
-          <h3>How it works</h3>
+          <h3 className="my-5">How it works</h3>
         </div>
         <section className="section-wrapper py-4">
           <h4 className="mb-4">Step 1</h4>
@@ -31,10 +41,10 @@ const Homepage = () => {
           <h4 className="mb-4">Step 2</h4>
           <div className="row step-wrapper hmmm">
             <div className="col-sm-12 col-md-6">
-              <img src={loginImage} alt="Step 2 pics" />
+              <img src={createButton} alt="Step 2 pics" />
             </div>
             <div className="col-sm-12 col-md-4">
-              <p>Click the create button</p>
+              <p>Click the create button on the top right corner</p>
             </div>
           </div>
         </section>
@@ -50,7 +60,7 @@ const Homepage = () => {
               </p>
             </div>
             <div className="col-sm-12 col-md-6">
-              <img src={loginImage} alt="Step 2 pics" />
+              <img src={createPage} alt="Step 2 pics" />
             </div>
           </div>
         </section>
@@ -59,7 +69,7 @@ const Homepage = () => {
           <h4 className="mb-4">Step 4</h4>
           <div className="row step-wrapper hmmm">
             <div className="col-sm-12 col-md-6">
-              <img src={loginImage} alt="Step 2 pics" />
+              <img src={search} alt="Step 2 pics" />
             </div>
             <div className="col-sm-12 col-md-4">
               <p>
@@ -85,7 +95,7 @@ const Homepage = () => {
               </p>
             </div>
             <div className="col-sm-12 col-md-6">
-              <img src={loginImage} alt="Step 2 pics" />
+              <img src={singlePage} alt="Step 2 pics" />
             </div>
           </div>
         </section>

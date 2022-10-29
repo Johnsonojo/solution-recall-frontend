@@ -1,0 +1,12 @@
+.form-control {
+  // border: 0.5px solid #000000 !important;
+  // border-right: none !important;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+}
+
+button:focus {
+  box-shadow: none !important;
+}

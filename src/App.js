@@ -1,11 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import NotFoundPage from "./pages/404";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import AllPosts from "./pages/Post/allPosts";
@@ -36,6 +37,7 @@ function App() {
               <Route path="/edit-post/:postId" element={<EditPost />} />
               <Route path="/posts/search" element={<SearchPost />} />
             </Route>
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <ToastContainer />
         </div>

@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import LandingNavbar from "../../components/LandingNavbar";
 import useAuth from "../../hooks/useAuth";
@@ -10,7 +10,6 @@ import "./login.scss";
 
 const LoginPage = () => {
   const { setAuth } = useAuth();
-  const navigate = useNavigate();
 
   const {
     register,
@@ -27,7 +26,7 @@ const LoginPage = () => {
         queryClient.setQueryData("loginDetails", () => data.data);
         setAuth({ id, firstName, role, accessToken });
         localStorage.setItem("user", JSON.stringify({ id, firstName }));
-        navigate("/all-posts");
+        window.location.replace("/all-posts");
       }
     },
     onError: (data) => {

@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "react-query";
-import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import postAPI from "../../../../redux/api/postAPI";
 import "./style.scss";
 
@@ -11,7 +12,10 @@ const DeletePostModal = (props) => {
   const mutation = useMutation(postAPI.deletePost, {
     onSuccess: (response) => {
       if (!response.error) {
-        navigate("/all-posts");
+        toast.success(response?.message);
+        setTimeout(() => {
+          navigate("/all-posts");
+        }, 1000);
       }
     },
     onError: (err) => {

@@ -1,8 +1,7 @@
-import Placeholder from "@tiptap/extension-placeholder";
-import TextAlign from "@tiptap/extension-text-align";
-import Underline from "@tiptap/extension-underline";
 import FontFamily from "@tiptap/extension-font-family";
+import TextAlign from "@tiptap/extension-text-align";
 import TextStyle from "@tiptap/extension-text-style";
+import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
@@ -318,12 +317,10 @@ const TipTap = (props) => {
       StarterKit,
       Underline,
       TextStyle,
-      Placeholder.configure({
-        placeholder: "Enter problem solution",
-      }),
       TextAlign.configure({
         types: ["heading", "paragraph"],
         alignments: ["left", "center", "right", "justify"],
+        defaultAlignment: "justify",
       }),
       FontFamily.configure({
         types: ["textStyle"],

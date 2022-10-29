@@ -71,7 +71,6 @@ const EditPost = () => {
               defaultValue={onePostDetails?.problemTitle}
               className="form-control"
               id="problemTitle"
-              placeholder="Enter problem title"
               {...register("problemTitle", { required: true })}
             />
             <label className="error-label">
@@ -88,7 +87,6 @@ const EditPost = () => {
               defaultValue={onePostDetails?.problemDescription}
               className="form-control"
               id="problemDescription"
-              placeholder="Enter problem description"
               {...register("problemDescription", { required: true })}
             />
             <label className="error-label">

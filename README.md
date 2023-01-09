@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# solution-recall-frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Solution recall is a platform that allows software developers and anyone learning to code to save problems or blocker encountered and their solutions, and then recall then at a later time when they need to.
 
-## Available Scripts
+Imagine you are a software developer or learning how to code and you encounter a problem which you eventually solved. All you need to do is save the problem with its solution so that you can recall it sometimes in the future when you encounter the same problem. Just recall the solution by searching using a keyword.
 
-In the project directory, you can run:
+## Table of Content
 
-### `npm start`
+- [Features](#features)
+- [Technologies](#technologies)
+- [App](#app)
+- [Authors](#authors)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Here are the list of features Solution Recall offers which are divided into to parts:
 
-### `npm test`
+- Users can create an account
+- Users can login to their account
+- Users can post a problem with its solution
+- Users can fetch all their posted problems with their respective solutions
+- Users can fetch a posted problem with its solution
+- Users can edit a posted problem with its solution
+- Users can delete a posted problem with its solution
+- Users can search for a posted problem by a keyword
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+The application is built with the following technologies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [React](https://reactjs.org/)
+- [React-Query v3](https://react-query-v3.tanstack.com/)
+- [Bootstrap v5](https://getbootstrap.com/)
+- [Tiptap Editor](https://tiptap.dev/)
+- [Axios](https://axios-http.com/docs/intro)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## App
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Hosted web app: https://solution-recall-frontend.vercel.app/
 
-### `npm run eject`
+## Authors
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Johnson Ojo

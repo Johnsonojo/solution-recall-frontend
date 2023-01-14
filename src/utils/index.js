@@ -81,3 +81,8 @@ export const clearStorage = () => {
   localStorage.clear();
   return null;
 };
+
+export const getTokensFromStorage = () => {
+  const { accessToken, refreshToken } = decrypt(getFromStorage("session"));
+  return { accessToken, refreshToken };
+};
